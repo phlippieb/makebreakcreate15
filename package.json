@@ -1,0 +1,22 @@
+{
+  "name": "makebreakcreate15",
+  "version": "1.0.0",
+  "description": "makebreakcreate15",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phlippieb/makebreakcreate15.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phlippieb/makebreakcreate15/issues"
+  },
+  "homepage": "https://github.com/phlippieb/makebreakcreate15#readme",
+  "dependencies": {
+    "johnny-five": "^0.8.90"
+  }
+}
