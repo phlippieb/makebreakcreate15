@@ -7,7 +7,7 @@ var servoPin = 5; // should probably be pwm pin (~ or # on board?)
 
 // create the story file and start the story
 var fs = require('fs');
-fs.writeFile("story.txt", "This is the story: ", function(err) {
+fs.writeFile("story.txt", "This is the story: \n", function(err) {
 	if (err) {
 		return console.log(err);
 	}
@@ -41,6 +41,11 @@ board.on("ready", function() {
 		if (true) {
 
 			// placeholder: (save storySnippet to story)
+			fs.appendFile('story.txt', storySnippet, function(err) {
+				if (err) {
+					return console.log(err);
+				}
+			})
 
 			// green LED on to indicate success
 			greenLED.on();
