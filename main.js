@@ -48,7 +48,8 @@ board.on("ready", function() {
 	});
 
 	var min = function(){
-		servo.min();
+		// servo.min();
+		servo.max();
 	}
 
 	var greenLEDOn = function() {
