@@ -1,4 +1,5 @@
 var five = require("johnny-five");
+var scroll = require('lcd-scrolling');
 var board = new five.Board();
 var startButtonPin = 10;
 var redLEDPin = 11; // has to be digital, I think
@@ -97,8 +98,20 @@ board.on("ready", function() {
 				toPrint += ' ';
 			}
 		}
-		lcd.clear().cursor(0, 0);
-		lcd.cursor(1,0).print(toPrint);
+
+		scroll.setup({
+	    lcd: lcd, /* Required */
+		    // Optional parameters defaults 
+		    // debug: false, - true will enable console.log() 
+		    // char_length: 16, - Number of characters per line on your LCD 
+		    // row: 2, - Number of rows on your LCD 
+		    // firstCharPauseDuration: 4000, - Duration of the pause before your text start scrolling. Value in ms 
+		    // lastCharPauseDuration: 1000, - Duration to wait before restarting the animation 
+		    // scrollingDuration: 300, - Time per step (speed of the animation). 
+		    // full: true - Extend text with white space to be animated out of the screen completely 
+		    scrollingDuration: 300,
+		});
+		scroll.line( 0, toPrint);
 	});
 
 	// start the process
