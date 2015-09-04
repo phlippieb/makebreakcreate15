@@ -67,6 +67,12 @@ board.on("ready", function() {
 		redLED.off();
 	}
 
+	var redLEDStop = function(cb) {
+		redLED.stop().off();
+		if(cb !== undefined)
+		cb();
+	}
+
 	var brewCoffee = function(ledOff) {
 		servo.min();
 		greenLED.off();
@@ -80,7 +86,7 @@ board.on("ready", function() {
 		var storySnippet = "And spaceships ";
 
 		// placeholder: (validate storySnippet)
-		if (true) {
+		if (false) {
 
 			// placeholder: (save storySnippet to story)
 			fs.appendFile('story.txt', storySnippet, function(err) {
@@ -96,15 +102,21 @@ board.on("ready", function() {
 			// make coffee!
 			servo.max();
 			// wait x seconds, then servo to min and LED off:
-			setTimeout(brewCoffee(),5000);
+			setTimeout(brewCoffee,5000);
 
 		} else {
 
 			// red LED on to indicate problem
 			redLED.blink();
-			setTimeout(redLEDOff(), 3000);
+			lcd.cursor(1, 0).print("Error? ");
+			setTimeout(function(){
+				redLEDStop(function(){
+					lcd.clear().cursor(0, 0);
+				});
+			}, 3000);
 
 			// display error message?
+			
 
 		}
 		// reset components
