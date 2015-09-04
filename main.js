@@ -39,16 +39,37 @@ board.on("ready", function() {
 	/**
 	 *  LCD
 	 */
-	 var lcd = new five.LCD({
-	   // LCD pin name  RS  EN  DB4 DB5 DB6 DB7
-	   // Arduino pin # 12  11   5   4  3  2
-	   pins: [ 7, 6, 5, 4, 3, 2 ],
-	   rows: 2,
-	   cols: 16
-	 });
+	var lcd = new five.LCD({
+		// LCD pin name  RS  EN  DB4 DB5 DB6 DB7
+		// Arduino pin # 12  11   5   4  3  2
+		pins: [ 7, 6, 5, 4, 3, 2 ],
+		rows: 2,
+		cols: 16
+	});
 
 	var min = function(){
 		servo.min();
+	}
+
+	var greenLEDOn = function() {
+		greenLED.on();
+	}
+
+	var greenLEDOff = function() {
+		greenLED.off();
+	}
+
+	var redLEDOn = function() {
+		redLED.on();
+	}
+
+	var redLEDOff = function() {
+		redLED.off();
+	}
+
+	var brewCoffee = function(ledOff) {
+		servo.min();
+		greenLED.off();
 	}
 
 
@@ -74,25 +95,20 @@ board.on("ready", function() {
 
 			// make coffee!
 			servo.max();
-			// wait x seconds:
-			setTimeout(min,5000); 
-			sdfgs(sd, function(){
-
-			})
-
-			 greenLED.off()
+			// wait x seconds, then servo to min and LED off:
+			setTimeout(brewCoffee(),5000);
 
 		} else {
 
 			// red LED on to indicate problem
-			redLED.on();
-			//redLED.blink()?
+			redLED.blink();
+			setTimeout(redLEDOff(), 3000);
 
 			// display error message?
 
 		}
 		// reset components
-		redLED.off();
+		// redLED.off();
 		// greenLED.off();
 		// servo.min();
 	});
