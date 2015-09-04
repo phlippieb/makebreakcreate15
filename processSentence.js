@@ -1,3 +1,11 @@
+/*
+	Process Sentence class. Added into function using the syntax:
+		var processSentence = require('processSentence.js');
+	Then after a file has been added to the 'input' folder called using:
+		processSentence.readInput();
+
+*/
+
 var sentiment = require('sentiment') ;
 var fs = require('fs');
 readInput();
