@@ -78,6 +78,27 @@ board.on("ready", function() {
 		greenLED.off();
 	}
 
+	// wys die laaste stuk van die dag se storie
+	fs.readFile('story.txt', 'utf8', function(err, data) {
+		if (err) return console.log("problemo muchacho!");
+		var lines = data.split(/\r?\n/);
+		lines.pop();
+		var numOfLinesToPrint = 5;
+		var toPrint = "";
+		if (lines.length < 5) {
+			for (var i = 0; var < lines.length; i++) {
+				toPrint += lines[i];
+				toPrint += ' ';
+			}
+		} else {
+			for (var i = lines.length - numOfLinesToPrint; i < lines.length; i++) {
+				toPrint += lines[i];
+				toPrint += ' ';
+			}
+		}
+		lcd.clear().cursor(0, 0);
+		lcd.cursor(1,0).print(toPrint);
+	});
 
 	// start the process
 	startButton.on("press", function() {
