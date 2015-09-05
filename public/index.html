@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>Breakmakecreate</title>
+
 </head>
 <body>
-	<form action="http://127.0.0.1:8080/myaction" method="post">
+	<form action="http://127.0.0.1:8080/writeText" method="post">
 		<input type="text" name="story" placeholder="Add to the story" id="storyText"/>
 		<input type="submit" value="Send" id="sendStory"/>
 	</form>
@@ -12,6 +13,11 @@
 	<div id="writtenText"></div>
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+  		var socket = io();
+	</script>	
 	<script type="text/javascript" src="javascripts/script.js"></script>
 </body>
 </html>

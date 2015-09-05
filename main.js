@@ -6,6 +6,12 @@ var startButtonPin = 10;
 var redLEDPin = 11; // has to be digital, I think
 var greenLEDPin = 12; // ditto
 
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 /**
  * Servo
  */
@@ -20,6 +26,39 @@ fs.writeFile("story.txt", "This is the story: \n", function(err) {
 		return console.log(err);
 	}
 });
+
+
+
+
+//Note that in version 4 of express, express.bodyParser() was
+//deprecated in favor of a separate 'body-parser' module.
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+// Set to serve a webpage
+// Use public/index.html as index page
+app.use('/', express.static(__dirname + '/public'));
+
+// Get POST requests that were sent to /writeText
+var storySnippet = "";
+
+app.post('/writeText', function(req, res) {
+	// Get the text ($_POST['story']) and add newline before
+  	storySnippet = "\r\n" + req.body.story;
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+
+  socket.on('writeStory', function(text){
+  	console.log("Text received: " + text);
+  	writeToStory(text);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+
 
 /**
  * Start the process
@@ -118,32 +157,10 @@ board.on("ready", function() {
 	// start the process
 	startButton.on("press", function() {
 		
-		// placeholder: (kry storySnippet van speech to text)
-
-		var rl = readline.createInterface({
-			input: process.stdin,
-		  	output: process.stdout
-		});
-
-		rl.question("Add your part to the story: ", function(answer) {
-		  	// TODO: Log the answer in a database
-		  	console.log("Here's what you wrote", answer);
-
-		  	rl.close();
-		});
-
-
-		var storySnippet = "And spaceships ";
-
 		// placeholder: (validate storySnippet)
 		if (false) {
 
-			// placeholder: (save storySnippet to story)
-			fs.appendFile('story.txt', storySnippet, function(err) {
-				if (err) {
-					return console.log(err);
-				}
-			})
+			// write to story
 
 			// green LED on to indicate success
 			greenLED.on();
@@ -175,3 +192,17 @@ board.on("ready", function() {
 		// servo.min();
 	});
 });
+
+http.listen(8080, function() {
+  console.log('Server running at http://127.0.0.1:8080/');
+});
+
+function writeToStory(text){
+	// placeholder: (save storySnippet to story)
+	var writeText = '\r\n'+text;
+	fs.appendFile('story.txt', writeText, function(err) {
+		if (err) {
+			return console.log(err);
+		}
+	})
+}

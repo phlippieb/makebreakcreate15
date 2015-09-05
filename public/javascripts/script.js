@@ -2,10 +2,9 @@ $(document).ready(function () {
 	$("#sendStory").on('click', function(){
 		var text = $("#storyText").val();
 
-		console.log(text);
-
+		/**
 		$.ajax({ 
-			url: '/myaction',
+			url: '/writeText',
 			method: 'post',
 		    data: { story : text },
 		    dataType: "jsonp", 
@@ -13,12 +12,16 @@ $(document).ready(function () {
 		    cache: false, 
 		    timeout: 5000, 
 		    success: function(data) { 
-		        $("#writtenText").append(data); 
+		    	console.log(text + " sent to be written to story.txt")
+		        $("div#writtenText").append(text); 
 		    }, 
 		    error: function(jqXHR, textStatus, errorThrown) { 
 		        //alert('Error connecting to the Node.js server... ' + textStatus + " " + errorThrown); 
 		    } 
 		});		
+		**/	
+
+		socket.emit('writeStory', text);
 
 		return false;
 	});
