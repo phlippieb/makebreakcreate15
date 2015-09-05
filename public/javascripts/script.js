@@ -5,6 +5,7 @@ $(document).ready(function () {
 	$("#sendStory").on('click', function(){
 		var text = $("#storyText").val();
 		$("#storyText").val('');
+		$("#smile").text('Press the button...');
 
 		socket.emit('writeStory', text);
 
@@ -12,6 +13,10 @@ $(document).ready(function () {
 		$("#smile").removeClass("hidden");
 
 		return false;
+	});
+
+	socket.on('buttonPress', function(){
+		$("#smile").text('Smile...');
 	});
 
 	socket.on('showForm', function(msg){
