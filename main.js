@@ -60,6 +60,19 @@ io.on('connection', function(socket){
 });
 
 
+// when something changes in the 'smiles' dir:
+fs.watch('smiles', function(event, filename) {
+	// test if new file is created
+	// (dit beteken iemand het geglimlag)
+	if (event == 'rename') {
+		console.log("smile added");
+		// se vir die page om 'n storie snippet te kry
+		io.emit('showForm');
+			// etc
+	}
+});
+
+
 /**
  * Start the process
  */
@@ -154,17 +167,7 @@ board.on("ready", function() {
 		scroll.line( 0, toPrint);
 	});
 
-	// when something changes in the 'smiles' dir:
-	fs.watch('smiles', function(event, filename) {
-		// test if new file is created
-		// (dit beteken iemand het geglimlag)
-		if (event == 'rename') {
-			// se vir die page om 'n storie snippet te kry
-			io.emit('showForm');
 
-			// etc
-		}
-	});
 
 
 	// start the process
