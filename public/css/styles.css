@@ -1,5 +1,6 @@
 * {
 	font-family: 'Noto Serif', serif;
+	color: #EEE;
 }
 body {
 	width: 100%;
@@ -49,4 +50,16 @@ input[type="text"] {
 	background-color: #EEE;
 	color: #111;
 
+}
+#smile {
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-style: italic;
+	font-size: 100px;
+}
+
+.hidden {
+	visibility: hidden;
 }
