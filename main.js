@@ -35,8 +35,8 @@ board.on("ready", function() {
 	redLED.off();
 	var greenLED = new five.Led(greenLEDPin);
 	greenLED.off();
-	var servo = new five.Servo({pin: servoPin, range:[50,90]});
-	servo.max();
+	var servo = new five.Servo({pin: servoPin, range:[10,90]});
+	servo.min();
 
 	/**
 	 *  LCD
@@ -49,10 +49,10 @@ board.on("ready", function() {
 		cols: 16
 	});
 
-	var min = function(){
-		 servo.min();
-		//servo.max();
-	}
+	// var min = function(){
+	// 	 // servo.min();
+	// 	servo.max();
+	// }
 
 	var greenLEDOn = function() {
 		greenLED.on();
@@ -77,7 +77,7 @@ board.on("ready", function() {
 	}
 
 	var brewCoffee = function(ledOff) {
-		servo.max();
+		servo.min();
 		greenLED.off();
 	}
 
@@ -164,6 +164,13 @@ board.on("ready", function() {
 							timer(2);
 							setTimeout(function(){
 								timer(1);
+								setTimeout(function(){
+									lcd.clear();
+									lcd.cursor(0, 0);
+									lcd.print("Coffee!");
+									lcd.cursor(1, 0);
+									lcd.print("Pew Pew!");
+								}, 1000);
 							},1000);
 						},1000);
 					},1000);
@@ -177,7 +184,7 @@ board.on("ready", function() {
 			//greenLED.blink()?
 
 			// make coffee!
-			servo.min();
+			servo.max();
 			// wait x seconds, then servo to min and LED off:
 			setTimeout(brewCoffee,1000);
 
