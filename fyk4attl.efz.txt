@@ -1,0 +1,15 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch DiffieTextInput
+# Changes to be committed:
+#	new file:   textInput.js
+#
+# Changes not staged for commit:
+#	modified:   main.js
+#	modified:   story.txt
+#
+# Untracked files:
+#	cmdLine.bat
+#
+
