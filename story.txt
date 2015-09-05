@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 This is the story: 
 adsjf
 asdf
@@ -7,22 +5,15 @@ fda
 1
 2
 3And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships And spaceships 
-=======
 Hellloooooo
 Eks die beste
 Nommer een
 asdasd
 zxczxc
-
 dasdasd
 asdjskdasekb.as
 asdjskdasekb.as
 asdjskdasekb.as
 asdjskdasekb.as
 Dit werk!
->>>>>>> origin/DiffieTextInput
-=======
 This is the story: 
-
-\dsdasdasdsds
->>>>>>> origin/DiffieTextInput
