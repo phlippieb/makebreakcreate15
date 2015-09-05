@@ -150,39 +150,43 @@ board.on("ready", function() {
 		cb();
 	}
 
-	// wys die laaste stuk van die dag se storie
-	fs.readFile('story.txt', 'utf8', function(err, data) {
-		if (err) return console.log("problemo muchacho!");
-		var lines = data.split(/\r?\n/);
-		lines.pop();
-		var numOfLinesToPrint = 5;
-		var toPrint = "";
-		if (lines.length < 5) {
-			for (var i = 0; i < lines.length; i++) {
-				toPrint += lines[i];
-				toPrint += ' ';
-			}
-		} else {
-			for (var i = lines.length - numOfLinesToPrint; i < lines.length; i++) {
-				toPrint += lines[i];
-				toPrint += ' ';
-			}
-		}
+	fs.watch('.', function(event, filename) {
+		if (event == 'change' && filename == 'story.txt') {
+			// wys die laaste stuk van die dag se storie
+			fs.readFile('story.txt', 'utf8', function(err, data) {
+				if (err) return console.log("problemo muchacho!");
+				var lines = data.split(/\r?\n/);
+				lines.pop();
+				var numOfLinesToPrint = 5;
+				var toPrint = "";
+				if (lines.length < 5) {
+					for (var i = 0; i < lines.length; i++) {
+						toPrint += lines[i];
+						toPrint += ' ';
+					}
+				} else {
+					for (var i = lines.length - numOfLinesToPrint; i < lines.length; i++) {
+						toPrint += lines[i];
+						toPrint += ' ';
+					}
+				}
 
-		scroll.setup({
-	    lcd: lcd, /* Required */
-		    // Optional parameters defaults 
-		    // debug: false, - true will enable console.log() 
-		    // char_length: 16, - Number of characters per line on your LCD 
-		    // row: 2, - Number of rows on your LCD 
-		    // firstCharPauseDuration: 4000, - Duration of the pause before your text start scrolling. Value in ms 
-		    // lastCharPauseDuration: 1000, - Duration to wait before restarting the animation 
-		    // scrollingDuration: 300, - Time per step (speed of the animation). 
-		    // full: true - Extend text with white space to be animated out of the screen completely 
-		    scrollingDuration: 300,
-		});
-		scroll.line( 0, toPrint);
-	});
+				scroll.setup({
+			    lcd: lcd, /* Required */
+				    // Optional parameters defaults 
+				    // debug: false, - true will enable console.log() 
+				    // char_length: 16, - Number of characters per line on your LCD 
+				    // row: 2, - Number of rows on your LCD 
+				    // firstCharPauseDuration: 4000, - Duration of the pause before your text start scrolling. Value in ms 
+				    // lastCharPauseDuration: 1000, - Duration to wait before restarting the animation 
+				    // scrollingDuration: 300, - Time per step (speed of the animation). 
+				    // full: true - Extend text with white space to be animated out of the screen completely 
+				    scrollingDuration: 300,
+				});
+				scroll.line( 0, toPrint);
+			});
+		}
+	})
 
 
 
