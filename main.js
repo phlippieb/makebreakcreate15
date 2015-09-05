@@ -189,6 +189,9 @@ board.on("ready", function() {
 
 	// start the process
 	startButton.on("press", function() {
+
+		// Change text in HTML page to "Smile..."
+		io.emit('buttonPress');
 		
 		// placeholder: (validate storySnippet)
 		if (true) {
