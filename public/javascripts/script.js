@@ -1,25 +1,21 @@
 $(document).ready(function () {
+	$("form").hide();
+
+
 	$("#sendStory").on('click', function(){
 		var text = $("#storyText").val();
 
-		console.log(text);
+		socket.emit('writeStory', text);
 
-		$.ajax({ 
-			url: '/myaction',
-			method: 'post',
-		    data: { story : text },
-		    dataType: "jsonp", 
-		    jsonpCallback: "_testcb", 
-		    cache: false, 
-		    timeout: 5000, 
-		    success: function(data) { 
-		        $("#writtenText").append(data); 
-		    }, 
-		    error: function(jqXHR, textStatus, errorThrown) { 
-		        //alert('Error connecting to the Node.js server... ' + textStatus + " " + errorThrown); 
-		    } 
-		});		
+		$("#storyForm").addClass("hidden");
+		$("#smile").removeClass("hidden");
 
 		return false;
 	});
+
+	socket.on('showForm', function(msg){
+		console.log("smile added");
+		$("#smile").addClass("hidden");
+		$("#storyForm").removeClass("hidden");
+	});	
 })

@@ -7,31 +7,22 @@ var app     = express();
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true })); 
 
+// Use public/index.html as index page
 app.use('/', express.static(__dirname + '/public'));
 
-
-//app.use(express.bodyParser());
-
-// app.get('/', function(req, res) {
-//     res.render('views/textForm.html');
-// });
-
-//app.use(express.static(__dirname + '/public'));
-
-app.post('/myaction', function(req, res) {
-  	//res.send('You sent the name "' + req.body.story + '".');
-
+// Get POST requests that were sent to /writeText
+app.post('/writeText', function(req, res) {
+	// Get the text ($_POST['story']) and add newline before
   	var writeStr = "\r\n" + req.body.story;
 
+  	// Write new story text to story.txt
 	var fs = require('fs');
 	fs.appendFile("story.txt", writeStr, function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }
-
-	    console.log("The file was saved!");
+	    console.log("The text has been added to story.txt");
 	}); 
-
 });
 
 app.listen(8080, function() {

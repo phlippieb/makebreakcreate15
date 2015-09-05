@@ -2,16 +2,27 @@
 <html>
 <head>
 	<title>Breakmakecreate</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/styles.css" />
+	
 </head>
 <body>
-	<form action="http://127.0.0.1:8080/myaction" method="post">
-		<input type="text" name="story" placeholder="Add to the story" id="storyText"/>
+	<div id="smile"><h1>Smile...</h1></div>
+
+	<form action="http://127.0.0.1:8080/writeText" method="post" class="hidden" id="storyForm">
+		<input type="text" name="story" placeholder="Add to the story" id="storyText"/><br/>
 		<input type="submit" value="Send" id="sendStory"/>
 	</form>
 
 	<div id="writtenText"></div>
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+  		var socket = io();
+	</script>	
 	<script type="text/javascript" src="javascripts/script.js"></script>
 </body>
 </html>

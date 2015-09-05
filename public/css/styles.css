@@ -1,0 +1,65 @@
+* {
+	font-family: 'Noto Serif', serif;
+	color: #EEE;
+}
+body {
+	width: 100%;
+	height: 700px;
+	background-color: #111;
+}
+
+form {
+	height: 100%;
+	width: 100%;
+	padding: 0% 10%;
+}
+
+input {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+input[type="text"]:focus {
+	border: none;
+	outline: none;
+}
+input[type="text"] {
+	color: white;
+	width:100%;
+	height: 14%;
+	background-color: #111;
+	border: none;
+	border-bottom: 1px solid #EEE;
+	font-style: italic;
+	padding-left: 20px;
+	font-size: 40px;
+}
+#sendStory:focus {
+	opacity: 0.8;
+	border: 1px solid white;
+	/*color: white;*/
+	outline: none;
+}
+#sendStory {
+	margin-right: 50px;
+	font-size: 30px;
+	float: right;
+	border-radius: 1px;
+	border: 1px solid #EEE;
+	background-color: #EEE;
+	color: #111;
+
+}
+#smile {
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-style: italic;
+	font-size: 100px;
+}
+
+.hidden {
+	visibility: hidden;
+}

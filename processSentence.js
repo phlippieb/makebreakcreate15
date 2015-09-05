@@ -12,18 +12,19 @@ readInput();
 
 /* Main function, reads file and calls readFile for every file*/
 function readInput() {
-	fs.readdir('input', function(err, files){
-		files.forEach(function(file) {
-			var pathto = 'input/' + file;
-			readFile(pathto);
-		});
+	// fs.readdir('input', function(err, files){
+	// 	files.forEach(function(file) {
+	// 		var pathto = 'input/' + file;
+	// 		readFile(story.);
+	// 	});
 
-	})
+	// })
+	readFile('story.txt');
 }
 
 /*Reads the file content and calls function to print the output file*/
 function readFile (file) {
-	fs.writeFile('output.json', '', function(err){
+	fs.writeFile('output.json', '[', function(err){
 		if (err) throw err;
 	})
 	fs.readFile(file, 'utf-8', function(err, data){
@@ -35,7 +36,7 @@ function readFile (file) {
 			 lines.forEach( function(line) {
 				process(line) ;	
 			}); 
-			
+			closefile() ;
 		}
 	});	
 }
@@ -44,8 +45,16 @@ function readFile (file) {
 function process(data) {
 	var score = sentiment(data) ;
 	var scoreval = score['score'];
-	var json = '{"data":"' + data + '", "score":"' + scoreval + '"}\u000A' ;
+	var json = '{"data":"' + data + '", "score":"' + scoreval + '"},\u000A' ;
 	fs.appendFile('output.json', json, function(err){
 		if (err) throw err;
 	})
 }
+
+function closefile() {
+	var endof = '{"data":"The end.", "score":"0"}]\u000A' ;
+	fs.appendFile('output.json', endof, function(err){
+		if (err) throw err;
+	})
+}
+
