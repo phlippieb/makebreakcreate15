@@ -126,7 +126,7 @@ board.on("ready", function() {
 		
 		// placeholder: (kry storySnippet van speech to text)
 
-		var rl = readline.createInterface({
+		var rl = readLine.createInterface({
 			input: process.stdin,
 		  	output: process.stdout
 		});
