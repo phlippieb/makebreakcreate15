@@ -1,9 +1,10 @@
 $(document).ready(function () {
-	$("form").hide();
+	// $("form").hide();
 
 
 	$("#sendStory").on('click', function(){
 		var text = $("#storyText").val();
+		$("#storyText").val('');
 
 		socket.emit('writeStory', text);
 

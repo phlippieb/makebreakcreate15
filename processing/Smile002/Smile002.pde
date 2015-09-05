@@ -66,7 +66,7 @@ void draw() {
         if(res > 4){
           cap.read();
           PImage cp = cap.get(0, 0, width, height);
-          cp.save("capture"+imageNo+".png");
+          cp.save("../../smiles/capture"+imageNo+".png");
           imageNo++;
           record = false;
         }

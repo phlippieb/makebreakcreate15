@@ -1,6 +1,7 @@
 * {
 	font-family: 'Noto Serif', serif;
 	color: #EEE;
+	visibility: visible;
 }
 body {
 	width: 100%;
@@ -61,5 +62,5 @@ input[type="text"] {
 }
 
 .hidden {
-	visibility: hidden;
+	display: none;
 }

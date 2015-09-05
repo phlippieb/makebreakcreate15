@@ -156,7 +156,7 @@ board.on("ready", function() {
 			fs.readFile('story.txt', 'utf8', function(err, data) {
 				if (err) return console.log("problemo muchacho!");
 				var lines = data.split(/\r?\n/);
-				lines.pop();
+				//lines.pop();
 				var numOfLinesToPrint = 5;
 				var toPrint = "";
 				if (lines.length < 5) {
@@ -261,12 +261,6 @@ board.on("ready", function() {
 			
 			});
 
-			scroll.line( 0, "Text of the first line" );
-			setTimeout(function(){
-				redLEDStop(function(){
-					// lcd.clear().cursor(0, 0);
-				});
-			}, 3000);
 
 			// display error message?
 			
