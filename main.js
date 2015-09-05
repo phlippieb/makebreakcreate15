@@ -1,5 +1,6 @@
 var five = require("johnny-five");
 var scroll = require('lcd-scrolling');
+var readLine = require('readline');
 var board = new five.Board();
 var startButtonPin = 10;
 var redLEDPin = 11; // has to be digital, I think
@@ -88,7 +89,7 @@ board.on("ready", function() {
 		var numOfLinesToPrint = 5;
 		var toPrint = "";
 		if (lines.length < 5) {
-			for (var i = 0; var < lines.length; i++) {
+			for (var i = 0; i < lines.length; i++) {
 				toPrint += lines[i];
 				toPrint += ' ';
 			}
@@ -118,6 +119,20 @@ board.on("ready", function() {
 	startButton.on("press", function() {
 		
 		// placeholder: (kry storySnippet van speech to text)
+
+		var rl = readline.createInterface({
+			input: process.stdin,
+		  	output: process.stdout
+		});
+
+		rl.question("Add your part to the story: ", function(answer) {
+		  	// TODO: Log the answer in a database
+		  	console.log("Here's what you wrote", answer);
+
+		  	rl.close();
+		});
+
+
 		var storySnippet = "And spaceships ";
 
 		// placeholder: (validate storySnippet)
