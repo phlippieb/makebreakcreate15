@@ -14,11 +14,11 @@ var servoPin = 9; // should probably be pwm pin (~ or # on board?)
 
 // create the story file and start the story
 var fs = require('fs');
-fs.writeFile("story.txt", "This is the story: \n", function(err) {
+/*fs.writeFile("story.txt", "This is the story: \n", function(err) {
 	if (err) {
 		return console.log(err);
 	}
-});
+});*/
 
 /**
  * Start the process
@@ -34,8 +34,8 @@ board.on("ready", function() {
 	redLED.off();
 	var greenLED = new five.Led(greenLEDPin);
 	greenLED.off();
-	var servo = new five.Servo(servoPin);
-	servo.min();
+	var servo = new five.Servo({pin: servoPin, range:[50,90]});
+	servo.max();
 
 	/**
 	 *  LCD
@@ -49,8 +49,8 @@ board.on("ready", function() {
 	});
 
 	var min = function(){
-		// servo.min();
-		servo.max();
+		 servo.min();
+		//servo.max();
 	}
 
 	var greenLEDOn = function() {
@@ -76,8 +76,14 @@ board.on("ready", function() {
 	}
 
 	var brewCoffee = function(ledOff) {
-		servo.min();
+		servo.max();
 		greenLED.off();
+	}
+
+	var timer = function(count, cb){
+		lcd.print(count+" ");
+		if(cb !== undefined)
+		cb();
 	}
 
 	// wys die laaste stuk van die dag se storie
@@ -88,7 +94,7 @@ board.on("ready", function() {
 		var numOfLinesToPrint = 5;
 		var toPrint = "";
 		if (lines.length < 5) {
-			for (var i = 0; var < lines.length; i++) {
+			for (var i = 0; i < lines.length; i++) {
 				toPrint += lines[i];
 				toPrint += ' ';
 			}
@@ -121,7 +127,7 @@ board.on("ready", function() {
 		var storySnippet = "And spaceships ";
 
 		// placeholder: (validate storySnippet)
-		if (false) {
+		if (true) {
 
 			// placeholder: (save storySnippet to story)
 			fs.appendFile('story.txt', storySnippet, function(err) {
@@ -129,15 +135,36 @@ board.on("ready", function() {
 					return console.log(err);
 				}
 			})
+			scroll.clear();
+			lcd.cursor(0, 0);
+			lcd.print("Whadup?")
+			lcd.cursor(1,0);
+			setTimeout(function(){
+				timer(5);
+				setTimeout(function(){
+					timer(4);
+					setTimeout(function(){
+						timer(3);
+						setTimeout(function(){
+							timer(2);
+							setTimeout(function(){
+								timer(1);
+							},1000);
+						},1000);
+					},1000);
+				},1000);
+			},1000);
+
+
 
 			// green LED on to indicate success
 			greenLED.on();
 			//greenLED.blink()?
 
 			// make coffee!
-			servo.max();
+			servo.min();
 			// wait x seconds, then servo to min and LED off:
-			setTimeout(brewCoffee,5000);
+			setTimeout(brewCoffee,1000);
 
 		} else {
 
