@@ -66,16 +66,21 @@ void draw() {
         if(res > 4){
           cap.read();
           PImage cp = cap.get(0, 0, width, height);
-          cp.save("capture"+imageNo+".png");
+          cp.save("../../smiles/capture"+imageNo+".png");
           imageNo++;
           record = false;
         }
         
         
       }
-      String str = nf(res,1,4);
-      text(str,width/2,height-10);
-    }
+//      String str = nf(res,1,4);
+//      text(str,width/2,height-10);
+//      myPort.write('1');
+    } //else 
+//    {                           //otherwise
+//    myPort.write('0');          //send a 0
+//    }
+    
 }
 
 void captureEvent(Capture _c) {
