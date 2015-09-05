@@ -66,7 +66,7 @@ fs.watch('smiles', function(event, filename) {
 	if (event == 'rename') {
 		// se vir die page om 'n storie snippet te kry
 		console.log("smile added");
-		io.emit('showForm', 'showForm');
+		io.emit('showForm');
 			// etc
 	}
 });
