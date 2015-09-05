@@ -71,6 +71,19 @@ fs.watch('smiles', function(event, filename) {
 	}
 });
 
+// when something changes in the 'smiles' dir:
+fs.watch('smiles', function(event, filename) {
+	// test if new file is created
+	// (dit beteken iemand het geglimlag)
+	if (event == 'rename') {
+		console.log("smile added");
+		// se vir die page om 'n storie snippet te kry
+		io.emit('showForm');
+			// etc
+	}
+});
+
+
 /**
  * Start the process
  */

@@ -1,4 +1,7 @@
 $(document).ready(function () {
+	$("form").hide();
+
+
 	$("#sendStory").on('click', function(){
 		var text = $("#storyText").val();
 
