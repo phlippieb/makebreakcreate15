@@ -1,4 +1,7 @@
 $(document).ready(function () {
+	$("form").hide();
+
+
 	$("#sendStory").on('click', function(){
 		var text = $("#storyText").val();
 
@@ -25,4 +28,9 @@ $(document).ready(function () {
 
 		return false;
 	});
-})
+
+	socket.on('showForm', function(){
+		console.log("smile added");
+		$("form").show();
+	});
+});
