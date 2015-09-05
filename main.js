@@ -59,6 +59,17 @@ io.on('connection', function(socket){
   });
 });
 
+// when something changes in the 'smiles' dir:
+fs.watch('smiles', function(event, filename) {
+	// test if new file is created
+	// (dit beteken iemand het geglimlag)
+	if (event == 'rename') {
+		// se vir die page om 'n storie snippet te kry
+		console.log("smile added");
+		io.emit('showForm', 'showForm');
+			// etc
+	}
+});
 
 /**
  * Start the process
@@ -160,17 +171,7 @@ board.on("ready", function() {
 		scroll.line( 0, toPrint);
 	});
 
-	// when something changes in the 'smiles' dir:
-	fs.watch('smiles', function(event, filename) {
-		// test if new file is created
-		// (dit beteken iemand het geglimlag)
-		if (event == 'rename') {
-			// se vir die page om 'n storie snippet te kry
-			io.emit('showForm');
 
-			// etc
-		}
-	});
 
 
 	// start the process
@@ -179,7 +180,7 @@ board.on("ready", function() {
 		// placeholder: (validate storySnippet)
 		if (true) {
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 			// placeholder: (save storySnippet to story)
 			fs.appendFile('story.txt', storySnippet, function(err) {
 				if (err) {
@@ -207,9 +208,9 @@ board.on("ready", function() {
 			},1000);
 
 
-=======
+//=======
 			// write to story
->>>>>>> origin/DiffieTextInput
+//>>>>>>> origin/DiffieTextInput
 
 			// green LED on to indicate success
 			greenLED.on();
