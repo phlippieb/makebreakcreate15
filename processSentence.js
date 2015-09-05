@@ -12,13 +12,14 @@ readInput();
 
 /* Main function, reads file and calls readFile for every file*/
 function readInput() {
-	fs.readdir('input', function(err, files){
-		files.forEach(function(file) {
-			var pathto = 'input/' + file;
-			readFile(pathto);
-		});
+	// fs.readdir('input', function(err, files){
+	// 	files.forEach(function(file) {
+	// 		var pathto = 'input/' + file;
+	// 		readFile(story.);
+	// 	});
 
-	})
+	// })
+	readFile('story.txt');
 }
 
 /*Reads the file content and calls function to print the output file*/
